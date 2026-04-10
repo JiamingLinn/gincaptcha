@@ -1,7 +1,7 @@
 # gin 验证码中间件
 example
 ```golang
-import "github.com/jiaminglinn/gin-captcha/code"
+import "github.com/jiaminglinn/gincaptcha/code"
 
 
 codeService := code.New(code.Options{})

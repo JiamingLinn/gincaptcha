@@ -1,3 +1,3 @@
-module github.com/jiaminglinn/gin-chaptcha/exmaple
+module github.com/jiaminglinn/ginchaptcha/exmaple
 
 go 1.26.1

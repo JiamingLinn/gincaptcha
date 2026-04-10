@@ -1,4 +1,4 @@
-module github.com/jiaminglinn/gin-captcha
+module github.com/jiaminglinn/gincaptcha
 
 go 1.26.1
 

@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/jiaminglinn/gin-captcha/utils"
+	"github.com/jiaminglinn/gincaptcha/utils"
 	captcha "github.com/lifei6671/gocaptcha"
 )
 

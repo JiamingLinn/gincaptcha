@@ -21,3 +21,4 @@ router.GET("/.../login", func(c *gin.Context) {
     }
 })
 ```
+其他见 [example/code/main.go](example/code/main.go)

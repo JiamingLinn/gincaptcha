@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="/static/js/tailwindcss.js"></script>
+</head>
+<body>
+	<h1 class="text-3xl font-bold underline text-clifford-500">Code</h1>
+	<div>
+		<h2 class="text-xl font-bold text-clifford-500">验证码表单</h2>
+		<form name="code" class="text-center" action="/code/verify" method="post">
+			<img src="/code" alt="验证码" style="width: 150px; height: 50px;">
+			<input type="text" name="code" placeholder="请输入验证码">
+			<input type="submit" value="提交">
+		</form>
+	</div>
+	<div>
+		<h2 class="text-xl font-bold text-clifford-500">普通表单</h2>
+		<form name="verify" class="text-center" action="/verify" method="post">
+			<input type="submit" value="提交">
+		</form>
+	</div>
+	<script>
+		let token = '';
+		document.querySelector("form[name='code']").addEventListener("submit", async function (e) {
+			e.preventDefault();
+			let code = e.target.querySelector("input[name='code']").value;
+			let res = await fetch("/code/verify", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					Code: code,
+				}),
+			});
+			let data = await res.json();
+			if (!data.Success) {
+				alert("验证码错误");
+				return;
+			}
+			token = data.Data;
+		});
+		document.querySelector("form[name='verify']").addEventListener("submit", async function (e) {
+			e.preventDefault();
+			let res = await fetch("/verify", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					Token: token,
+				}),
+			});
+			let data = await res.json();
+			if (!data.Success) {
+				alert("验证码错误");
+				return;
+			}
+			alert("验证码正确");
+		});
+	</script>	
+</body>
+</html>

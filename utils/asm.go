@@ -105,11 +105,9 @@ func (a *AESGCM) DecryptBase64(cipherText string) (string, error) {
 	return string(d), nil
 }
 
-// GenerateRandomKey 生成安全的随机密钥（推荐 32 字节 = AES-256）
-func GenerateRandomKey(size int) ([]byte, error) {
+// MustGenerateRandomKey 生成安全的随机密钥（推荐 32 字节 = AES-256）
+func MustGenerateRandomKey(size int) []byte {
 	key := make([]byte, size)
-	if _, err := io.ReadFull(rand.Reader, key); err != nil {
-		return nil, err
-	}
-	return key, nil
+	io.ReadFull(rand.Reader, key)
+	return key
 }
